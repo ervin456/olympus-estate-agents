@@ -1,3 +1,9 @@
-export default function Home(){
-    return <h1>Home</h1>
+export default function Home() {
+  return (
+    <div className="home-container">
+      <div className="home-logo-container">
+        <img src="olympus_logo_for_homepage.webp"></img>
+      </div>
+    </div>
+  );
 }
