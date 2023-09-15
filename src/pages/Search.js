@@ -1,21 +1,32 @@
 import React, { useState, useEffect } from "react";
 import { CustomDropdown } from "../components/CustomDropdown/CustomDropdown";
-import { BEDROOMS, LOCATIONS, MAX_PRICES, TYPE } from "../utils/constants";
+import {
+  BEDROOMS,
+  LOCATIONS,
+  MAX_PRICES,
+  MAX_PRICES_MONTHLY,
+  TYPE,
+} from "../utils/constants";
 import { CustomButton } from "../components/CustomButton/CustomButton";
 export default function Search() {
   const [locations, setLocations] = useState([]);
   const [maxPrice, setmaxPrice] = useState([]);
+  const [maxPriceMonthly, setmaxPriceMonthly] = useState([]);
   const [type, setType] = useState([]);
   const [bedrooms, setBedrooms] = useState([]);
   const [searchMenuOptions, setSearchMenuOptions] = useState(1);
   const [selectedLocation, setSelectedLocation] = useState(LOCATIONS[0]);
   const [selectedMaxPrice, setSelectedMaxPrice] = useState(MAX_PRICES[0]);
+  const [selectedMaxPriceMonthly, setSelectedMaxPriceMonthly] = useState(
+    MAX_PRICES_MONTHLY[0]
+  );
   const [selectedType, setSelectedType] = useState(TYPE[0]);
   const [selectedBedroom, setSelectedBedroom] = useState(BEDROOMS[0]);
 
   useEffect(() => {
     setLocations(LOCATIONS);
     setmaxPrice(MAX_PRICES);
+    setmaxPriceMonthly(MAX_PRICES_MONTHLY);
     setType(TYPE);
     setBedrooms(BEDROOMS);
   }, []);
@@ -23,7 +34,10 @@ export default function Search() {
   function onSearchButtonClicked(event) {
     console.log("click");
     console.log("selected Location: ", selectedLocation);
-    console.log("selected Max Price: ", selectedMaxPrice);
+    if (searchMenuOptions === 1) {
+      console.log("selected Max Price: ", selectedMaxPrice);
+    } else console.log("selected Max Price Monthly: ", selectedMaxPriceMonthly);
+
     console.log("selected Type: ", selectedType);
     console.log("selected Bedrooms: ", selectedBedroom);
   }
@@ -70,7 +84,10 @@ export default function Search() {
             {" "}
             <label for="max-price">Max Price(per month) </label>
             <br></br>
-            <CustomDropdown values={maxPrice} onChange={setSelectedMaxPrice} />
+            <CustomDropdown
+              values={maxPriceMonthly}
+              onChange={setSelectedMaxPriceMonthly}
+            />
             <br></br>
             <br></br>
           </div>
