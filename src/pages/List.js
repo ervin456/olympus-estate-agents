@@ -12,7 +12,7 @@ export default function List() {
         nrOfBedrooms: 5,
         nrOfBathrooms: 3,
         productDescription:
-          "he bathroom has a bath, a toilet and a washbasin, but it doesn’t have a shower.There’s a microwave, a washing machine and a fridge-freezer, but there isn’t a dishwasher.",
+          "He bathroom has a bath, a toilet and a washbasin, but it doesn’t have a shower.There’s a microwave, a washing machine and a fridge-freezer, but there isn’t a dishwasher.",
         price: 800000,
       },
       {
@@ -24,6 +24,26 @@ export default function List() {
         nrOfBathrooms: 10,
         productDescription:
           "While each modern floor plan brings something unique to the table, they all emphasize clean lines, geometric shapes, open floor plans, and an aesthetically pleasing design flow in both interior and exterior spaces.",
+        price: 450000,
+      },
+      {
+        imageURL: "house 3.jpg",
+        productDisplayName:
+          "Spacious detached residence offering modern comforts and a sprawling backyard escape.",
+        nrOfBedrooms: 2,
+        nrOfBathrooms: 11,
+        productDescription:
+          "Discover the epitome of spacious luxury in this stunning detached home, complete with modern amenities, a sprawling backyard retreat, and a welcoming circular driveway. This meticulously designed residence offers the perfect blend of comfort and style, providing a gracious living experience for those seeking both tranquility and convenience in a prestigious neighborhood",
+        price: 700000,
+      },
+      {
+        imageURL: "house4.jpg",
+        productDisplayName:
+          "Expansive detached house featuring contemporary comforts, a generous backyard, and a welcoming circular driveway.",
+        nrOfBedrooms: 5,
+        nrOfBathrooms: 8,
+        productDescription:
+          "Enchanting garden house nestled amidst lush greenery, offering a serene escape from the hustle and bustle of city life. This charming retreat is a perfect blend of nature and comfort, where you can unwind in a picturesque setting",
         price: 1000000,
       },
     ]);
@@ -31,6 +51,9 @@ export default function List() {
 
   return (
     <div className="list-page">
+      <div className="list-page-logo">
+        <img src="oea_logo.png"></img>
+      </div>
       <h3>Properties for Sale</h3>
       <div className="product-card-list-container">
         {productList.map((product, index) => {

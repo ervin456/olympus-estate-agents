@@ -1,6 +1,6 @@
 export function CustomButton({ children, ...props }) {
   return (
-    <button className="customButton" {...props}>
+    <button className="custom-button" {...props}>
       {children}
     </button>
   );

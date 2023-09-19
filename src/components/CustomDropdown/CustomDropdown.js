@@ -6,7 +6,7 @@ export function CustomDropdown({ values, onChange, children, ...props }) {
 
   return (
     <select
-      className="customDropdown"
+      className="custom-dropdown"
       onChange={(event) => dropdownOnChange(event)}
     >
       {values.map((value) => {
