@@ -44,7 +44,7 @@ export default function Search() {
 
   return (
     <div className="search-page">
-      <img src="oea_logo.png"></img>
+      <img src="/oea_logo.png"></img>
       <div className="selector-buttons">
         <button
           className={`selector-button-style${

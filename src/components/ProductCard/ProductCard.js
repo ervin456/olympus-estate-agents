@@ -7,29 +7,34 @@ export function ProductCard({
   price,
 }) {
   return (
-    <div className="card-container">
-      <img className="card-image" src={`${imageURL}`} alt=""></img>
-      <div className="card-display-name">{productDisplayName}</div>
-      <div className="icon-container">
+    <div className="product-card-container">
+      <img
+        className="product-card-image"
+        src={`${imageURL}`}
+        alt="Image not found"
+      ></img>
+      <div className="product-card-display-name">{productDisplayName}</div>
+      <div className="product-icon-container">
         <div>
           <img
-            className="room-icons-bedroom"
+            className="product-room-icons-bedroom"
             src="icons8-bed-50.png"
-            alt=""
+            alt="Image not found"
           ></img>{" "}
-          <span className="number-of-rooms">{nrOfBedrooms}</span>
+          <span className="product-number-of-rooms">{nrOfBedrooms}</span>
         </div>
         <div>
           <img
-            className="room-icon-bathroom"
+            className="product-room-icon-bathroom"
             src="icons8-bathroom-50.png"
-            alt=""
-          ></img>{" "}
-          <span className="number-of-rooms">{nrOfBathrooms}</span>
+            alt="Image not found"
+          ></img>
+          {""}
+          <span className="product-number-of-rooms">{nrOfBathrooms}</span>
         </div>
       </div>
-      <div className="card-descripton">{productDescription}</div>
-      <button className="card-price-button">{price}</button>
+      <div className="product-card-descripton">{productDescription}</div>
+      <button className="product-card-price-button">{price}</button>
     </div>
   );
 }
