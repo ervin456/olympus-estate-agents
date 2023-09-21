@@ -105,3 +105,5 @@ export const TYPE = [
   "Semi-Detached Bunglaow",
 ];
 export const BEDROOMS = ["Studio+", "1", "2", "3", "4", "5", "6"];
+
+export const DESCRIPTION_CHARACTER_LIMIT = 90;

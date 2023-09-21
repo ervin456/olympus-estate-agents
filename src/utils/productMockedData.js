@@ -10,6 +10,15 @@ export const PRODUCT_DATA = [
     productDescription:
       "Nestled in a serene suburban neighborhood, this detached house is the epitome of modern living. Its striking concrete exterior exudes a timeless elegance and durability, while its spacious design offers the perfect balance between privacy and comfort. Stepping inside, the open-concept layout welcomes you with an abundance of natural light that flows through large windows, creating a warm and inviting atmosphere. The sleek and minimalist interior features high-end finishes, including polished concrete floors and countertops, adding a touch of industrial chic to the contemporary design. With its expansive backyard and outdoor entertaining spaces, this concrete detached house promises a harmonious blend of style and functionality for those seeking a refined yet practical home.",
     price: 800000,
+    images: [
+      "https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/1080696/pexels-photo-1080696.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/1743227/pexels-photo-1743227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/2227832/pexels-photo-2227832.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/2251247/pexels-photo-2251247.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/439227/pexels-photo-439227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    ],
+    EPC: "https://www.rowlen.co.uk/wp-content/uploads/2023/05/EPC_2.jpg",
   },
   {
     id: "2",
@@ -22,6 +31,15 @@ export const PRODUCT_DATA = [
     productDescription:
       "Nestled amidst a lush and vibrant oasis, the garden house is a charming retreat that seamlessly blends with its natural surroundings. With its quaint exterior featuring ivy-covered walls and a welcoming wooden porch, it exudes timeless rustic charm. Inside, large windows flood the interior with natural light, creating a warm and inviting atmosphere. The open-plan design allows for a seamless transition between indoor and outdoor living spaces, making it an ideal spot for relaxation and entertaining. Surrounded by fragrant blooms and the gentle rustling of leaves, this garden house offers a tranquil escape from the hustle and bustle of everyday life.",
     price: 450000,
+    images: [
+      "https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/1080696/pexels-photo-1080696.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://img.freepik.com/free-photo/armchair-green-living-room-with-copy-space_43614-910.jpg?w=1380&t=st=1695301154~exp=1695301754~hmac=14a9080b834a412f33b2f48ccbabf5c3c47fc78adb8caa8101d4c849905824e0",
+      "https://images.pexels.com/photos/2227832/pexels-photo-2227832.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/2251247/pexels-photo-2251247.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/439227/pexels-photo-439227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    ],
+    EPC: "https://www.usehammock.com/wp-content/uploads/2023/02/eb46cf5691c4-epcrating.png.webp",
   },
   {
     id: "3",
@@ -33,6 +51,15 @@ export const PRODUCT_DATA = [
     productDescription:
       "Nestled within a lush botanical wonderland, the garden house is a picturesque haven that captures the essence of serene living. Its exterior is a harmonious fusion of timber and stone, featuring a quaint arched doorway that beckons visitors inside. Upon entering, you are greeted by an interior adorned with botanical-themed decor, connecting the space with its verdant surroundings. Large, strategically placed windows frame captivating garden vistas, infusing the rooms with an airy and calming ambiance. The garden house is a sanctuary where one can escape into the embrace of nature's beauty while enjoying the comforts of a well-appointed abode.",
     price: 700000,
+    images: [
+      "https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/1080696/pexels-photo-1080696.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/1743227/pexels-photo-1743227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/2227832/pexels-photo-2227832.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/2251247/pexels-photo-2251247.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/439227/pexels-photo-439227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    ],
+    EPC: "https://www.usehammock.com/wp-content/uploads/2023/02/eb46cf5691c4-epcrating.png.webp",
   },
   {
     id: "4",
@@ -42,7 +69,16 @@ export const PRODUCT_DATA = [
     nrOfBedrooms: 5,
     nrOfBathrooms: 8,
     productDescription:
-      "Tucked away amidst a flourishing tapestry of flora and fauna, the garden house is a tranquil retreat designed to harmonize with the natural world. Its façade boasts a timeless blend of weathered brick and reclaimed wood, complemented by a welcoming porch adorned with hanging baskets of vibrant flowers. Step inside, and you'll discover a space bathed in soft, dappled sunlight filtered through vine-draped windows, creating an inviting and organic atmosphere. The open-concept interior seamlessly integrates with the surrounding garden, offering an idyllic setting for relaxation and intimate gatherings. This garden house is a captivating sanctuary, where one can immerse themselves in the beauty of nature without sacrificing modern comforts.",
+      "Expansive detached house featuring contemporary comforts, a generous backyard, and a welcoming circular driveway.",
     price: 1000000,
+    images: [
+      "https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/1080696/pexels-photo-1080696.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/1743227/pexels-photo-1743227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/2227832/pexels-photo-2227832.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/2251247/pexels-photo-2251247.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/439227/pexels-photo-439227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    ],
+    EPC: "https://www.usehammock.com/wp-content/uploads/2023/02/eb46cf5691c4-epcrating.png.webp",
   },
 ];

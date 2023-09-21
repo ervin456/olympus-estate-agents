@@ -1,6 +1,7 @@
 import { ProductCard } from "../components/ProductCard/ProductCard";
 import { useState, useEffect } from "react";
 import { PRODUCT_DATA } from "../utils/productMockedData";
+
 export default function ProductList() {
   const [productList, setProductList] = useState([]);
   useEffect(() => {
@@ -14,9 +15,10 @@ export default function ProductList() {
       </div>
       <h3>Properties for Sale</h3>
       <div className="product-card-list-container">
-        {productList.map((product, index) => {
+        {productList?.map((product, index) => {
           return (
             <ProductCard
+              key={`product-card-${product.id}`}
               imageURL={product?.imageURL}
               productDisplayName={product?.productDisplayName}
               nrOfBedrooms={product?.nrOfBedrooms}

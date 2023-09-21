@@ -8,6 +8,13 @@ import Search from "./pages/Search";
 function App() {
   return (
     <>
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        ></link>
+        ;
+      </head>
       <Navbar />
 
       <div className="container">

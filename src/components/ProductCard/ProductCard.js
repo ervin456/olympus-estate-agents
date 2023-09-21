@@ -1,3 +1,5 @@
+import { DESCRIPTION_CHARACTER_LIMIT } from "../../utils/constants";
+import { cutFirstNCharacter } from "../../utils/HelperFunctions";
 export function ProductCard({
   imageURL,
   productDisplayName,
@@ -33,7 +35,9 @@ export function ProductCard({
           <span className="product-number-of-rooms">{nrOfBathrooms}</span>
         </div>
       </div>
-      <div className="product-card-descripton">{productDescription}</div>
+      <div className="product-card-descripton">
+        {cutFirstNCharacter(productDescription, DESCRIPTION_CHARACTER_LIMIT)}
+      </div>
       <button className="product-card-price-button">{price}</button>
     </div>
   );

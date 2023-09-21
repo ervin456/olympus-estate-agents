@@ -1,7 +1,11 @@
 import { useParams } from "react-router-dom";
 import { PRODUCT_DATA } from "../utils/productMockedData";
 import { useState, useEffect } from "react";
-
+import ProductPhotoAlbum from "../components/ProductPhotoAlbum/ProductPhotoAlbum";
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+></link>;
 export default function ProductDetails() {
   const { id } = useParams();
   const [product, setProduct] = useState({});
@@ -12,7 +16,7 @@ export default function ProductDetails() {
     });
     setProduct(temp);
   }, []);
-  console.log("product= ", product);
+
   return (
     <div className="product-details-page">
       <div className="product-details-logo">
@@ -25,6 +29,24 @@ export default function ProductDetails() {
         <div className="product-details-display-name">
           {product.productDisplayName}
         </div>
+      </div>
+      <div className="product-details-element-bar">
+        <a href="#Images" img class="fa fa-image">
+          <span className="product-details-element-bar-item-text">Images</span>
+        </a>
+        <a href="#Map" img class="fa fa-map">
+          <span className="product-details-element-bar-item-text">Map</span>
+        </a>
+
+        <a href="#EPC" img class="fa fa-bar-chart">
+          <span className="product-details-element-bar-item-text">EPC</span>
+        </a>
+
+        <a href="#Brochure" img class="fa fa-file-pdf-o">
+          <span className="product-details-element-bar-item-text">
+            Brochure
+          </span>
+        </a>
       </div>
       <div className="product-price-rooms-combine">
         <div className="product-details-price">£{product.price}</div>
@@ -48,6 +70,33 @@ export default function ProductDetails() {
       <div className="product-details-long-descpirption">
         {product.productDescription}
       </div>
+      <section id="Images"></section>
+      <h3 className="product-details-image-title">Property Images</h3>
+      <ProductPhotoAlbum photos={product.images} />
+      <section id="Map"></section>
+      <h3 className="product-details-image-title">Map</h3>
+
+      <div class="gmap_canvas">
+        <iframe
+          class="product-details-map-location"
+          frameborder="0"
+          scrolling="no"
+          marginheight="0"
+          marginwidth="0"
+          src="https://maps.google.com/maps?&amp;hl=en&amp;q=University of Oxford&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+        ></iframe>
+        <a href="https://connectionsgame.org/"></a>
+      </div>
+      <section id="EPC"></section>
+      <h3 className="product-details-image-title">EPC</h3>
+      <div className="product-details-epc">
+        <img src={product.EPC}></img>
+      </div>
+      <section id="Brochure"></section>
+      <h3 className="product-details-image-title">Brochure</h3>
+      <button class="product-details-brochure-button">
+        <i class="fa fa-download"></i> Download Brochure
+      </button>
     </div>
   );
 }
