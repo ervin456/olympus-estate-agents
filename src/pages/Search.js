@@ -8,6 +8,8 @@ import {
   TYPE,
 } from "../utils/constants";
 import { CustomButton } from "../components/CustomButton/CustomButton";
+import { useSearchParams } from "react-router-dom";
+
 export default function Search() {
   const [locations, setLocations] = useState([]);
   const [maxPrice, setmaxPrice] = useState([]);

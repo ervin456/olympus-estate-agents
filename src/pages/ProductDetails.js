@@ -50,22 +50,24 @@ export default function ProductDetails() {
       </div>
       <div className="product-price-rooms-combine">
         <div className="product-details-price">£{product.price}</div>
-        <img
-          className="product-details-room-icon-bedroom"
-          src="/icons8-bed-50.png"
-          alt="Image not found"
-        ></img>{" "}
-        <span className="product-details-number-of-rooms">
-          {product.nrOfBedrooms}
-        </span>
-        <img
-          className="product-details-room-icon-bathroom"
-          src="/icons8-bathroom-50.png"
-          alt="Image not found"
-        ></img>{" "}
-        <span className="product-details-number-of-rooms">
-          {product.nrOfBathrooms}
-        </span>
+        <div className="prduct-details-rooms-numbers-combine">
+          <img
+            className="product-details-room-icon-bedroom"
+            src="/icons8-bed-50.png"
+            alt="Image not found"
+          ></img>{" "}
+          <span className="product-details-number-of-rooms">
+            {product.nrOfBedrooms}
+          </span>
+          <img
+            className="product-details-room-icon-bathroom"
+            src="/icons8-bathroom-50.png"
+            alt="Image not found"
+          ></img>{" "}
+          <span className="product-details-number-of-rooms">
+            {product.nrOfBathrooms}
+          </span>
+        </div>
       </div>
       <div className="product-details-long-descpirption">
         {product.productDescription}
