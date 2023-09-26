@@ -99,46 +99,45 @@ export default function Search() {
         </button>
       </div>
       <div className="search-dropdown">
-        <label for="location">Location</label>
-        <br></br>
+        <div className="search-dropdown-name" for="location">
+          Location
+        </div>
+
         <CustomDropdown values={locations} onChange={setSelectedLocation} />
-        <br></br>
-        <br></br>
         {searchMenuOptions === 1 && (
           <div>
             {" "}
-            <label for="max-price">Max Price</label>
-            <br></br>
+            <div className="search-dropdown-name" for="max-price">
+              Max Price
+            </div>
             <CustomDropdown values={maxPrice} onChange={setSelectedMaxPrice} />
-            <br></br>
-            <br></br>
           </div>
         )}
         {searchMenuOptions === 2 && (
           <div>
             {" "}
-            <label for="max-price">Max Price(per month) </label>
-            <br></br>
+            <div className="search-dropdown-name" for="max-price">
+              Max Price(per month){" "}
+            </div>
             <CustomDropdown
               values={maxPricePerMonth}
               onChange={setSelectedmaxPricePerMonth}
             />
-            <br></br>
-            <br></br>
           </div>
         )}
-        <label for="type">Type</label>
-        <br></br>
+        <div className="search-dropdown-name" for="type">
+          Type
+        </div>
         <CustomDropdown
           values={Propertytype}
           onChange={setSelectedPropertyType}
         />
-        <br></br>
-        <br></br>
-        <label for="bedrooms">Bedrooms</label>
-        <br></br>
+
+        <div className="search-dropdown-name" for="bedrooms">
+          Bedrooms
+        </div>
         <CustomDropdown values={bedrooms} onChange={setSelectedBedroom} />
-        <br></br>
+
         <br></br>
         <CustomButton onClick={(event) => OnSearchButtonClicked(event)}>
           Search

@@ -14,5 +14,9 @@ export default function ProductPhotoAlbum({ photos }) {
     setconvertedPhotoData(tempPhotoData);
   }, [photos]);
 
-  return <PhotoAlbum layout="rows" photos={convertedPhotoData} />;
+  return (
+    <div className="details-page-photo-album">
+      <PhotoAlbum layout="rows" photos={convertedPhotoData} />;
+    </div>
+  );
 }

@@ -27,7 +27,9 @@ export default function ProductDetails() {
           <img src={product.imageURL} alt="Image not found "></img>
         </div>
         <div className="product-details-display-name">
-          {product.productDisplayName}
+          {`${product?.nrOfBedrooms} bed ${product?.propertyType} ${
+            product?.type === "sale" ? "for sale " : "to rent"
+          } in ${product?.address?.town}, ${product?.address?.street}`}
         </div>
       </div>
       <div className="product-details-element-bar">

@@ -100,19 +100,26 @@ export default function ProductList() {
         {productList.length !== 0
           ? productList?.map((product, index) => {
               return (
-                <ProductCard
-                  key={`product-card-${product.id}`}
-                  imageURL={product?.imageURL}
-                  productDisplayName={`${product?.nrOfBedrooms} bed ${
-                    product?.propertyType
-                  } ${product?.type === "sale" ? "for sale " : "to rent"} in ${
-                    product?.address.town
-                  }, ${product?.address.street}`}
-                  nrOfBedrooms={product?.nrOfBedrooms}
-                  nrOfBathrooms={product?.nrOfBathrooms}
-                  productDescription={product?.productDescription}
-                  price={product?.price}
-                />
+                <a
+                  className="product-card-link-container"
+                  href={`/list/${product.id}`}
+                >
+                  <ProductCard
+                    key={`product-card-${product.id}`}
+                    imageURL={product?.imageURL}
+                    productDisplayName={`${product?.nrOfBedrooms} bed ${
+                      product?.propertyType
+                    } ${
+                      product?.type === "sale" ? "for sale " : "to rent"
+                    } in ${product?.address?.town}, ${
+                      product?.address?.street
+                    }`}
+                    nrOfBedrooms={product?.nrOfBedrooms}
+                    nrOfBathrooms={product?.nrOfBathrooms}
+                    productDescription={product?.productDescription}
+                    price={product?.price}
+                  />
+                </a>
               );
             })
           : null}
