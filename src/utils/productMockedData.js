@@ -1,14 +1,14 @@
 export const PRODUCT_DATA = [
   {
     id: "1",
+    type: "sale",
     address: {
-      town: "",
-      street: "",
+      town: "Almas",
+      street: "Kanyadi utca",
     },
+    propertyType: "Bungalow",
     imageURL:
       "https://www.bhg.com/thmb/H9VV9JNnKl-H1faFXnPlQfNprYw=/1799x0/filters:no_upscale():strip_icc()/white-modern-house-curved-patio-archway-c0a4a3b3-aa51b24d14d0464ea15d36e05aa85ac9.jpg",
-    productDisplayName:
-      "5 bed detached house for sale in Netherfield Farm Close, Sheffield",
     nrOfBedrooms: 5,
     nrOfBathrooms: 3,
     productDescription:
@@ -26,11 +26,15 @@ export const PRODUCT_DATA = [
   },
   {
     id: "2",
+    type: "sale",
+    address: {
+      town: "Lovete",
+      street: "Csato utca",
+    },
+    propertyType: "Detached House",
     imageURL:
       "https://w0.peakpx.com/wallpaper/480/818/HD-wallpaper-man-made-resort-tropical-ocean.jpg?fbclid=IwAR2vbaFCXlme2mq_7eTD9VdduleI9_DKcaO3-vLkuimo42GlUDxovCzMAF8",
-    productDisplayName:
-      "Some of the most perfectly minimal yet beautifully creative uses of space can be found in our collection of modern house plans. ",
-    nrOfBedrooms: 8,
+    nrOfBedrooms: 3,
     nrOfBathrooms: 10,
     productDescription:
       "Nestled amidst a lush and vibrant oasis, the garden house is a charming retreat that seamlessly blends with its natural surroundings. With its quaint exterior featuring ivy-covered walls and a welcoming wooden porch, it exudes timeless rustic charm. Inside, large windows flood the interior with natural light, creating a warm and inviting atmosphere. The open-plan design allows for a seamless transition between indoor and outdoor living spaces, making it an ideal spot for relaxation and entertaining. Surrounded by fragrant blooms and the gentle rustling of leaves, this garden house offers a tranquil escape from the hustle and bustle of everyday life.",
@@ -47,9 +51,13 @@ export const PRODUCT_DATA = [
   },
   {
     id: "3",
+    type: "sale",
+    address: {
+      town: "Lovete",
+      street: "Demeter utca",
+    },
+    propertyType: "Town House",
     imageURL: "/house 3.jpg",
-    productDisplayName:
-      "Spacious detached residence offering modern comforts and a sprawling backyard escape.",
     nrOfBedrooms: 2,
     nrOfBathrooms: 11,
     productDescription:
@@ -67,14 +75,118 @@ export const PRODUCT_DATA = [
   },
   {
     id: "4",
+    type: "sale",
+    address: {
+      town: "Banya",
+      street: "Szent utca",
+    },
+    propertyType: "Town House",
     imageURL: "/house4.jpg",
-    productDisplayName:
-      "Expansive detached house featuring contemporary comforts, a generous backyard, and a welcoming circular driveway.",
     nrOfBedrooms: 5,
     nrOfBathrooms: 8,
     productDescription:
       "Expansive detached house featuring contemporary comforts, a generous backyard, and a welcoming circular driveway.",
     price: 1000000,
+    images: [
+      "https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/1080696/pexels-photo-1080696.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/1743227/pexels-photo-1743227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/2227832/pexels-photo-2227832.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/2251247/pexels-photo-2251247.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/439227/pexels-photo-439227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    ],
+    EPC: "https://www.usehammock.com/wp-content/uploads/2023/02/eb46cf5691c4-epcrating.png.webp",
+  },
+  {
+    id: "5",
+    type: "rent",
+    address: {
+      town: "Banya",
+      street: "kalapos utca",
+    },
+    propertyType: "Detached House",
+    imageURL:
+      "https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271_1280.jpg",
+    nrOfBedrooms: 4,
+    nrOfBathrooms: 4,
+    productDescription:
+      "Expansive detached house featuring contemporary comforts, a generous backyard, and a welcoming circular driveway.",
+    price: 1000,
+    images: [
+      "https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/1080696/pexels-photo-1080696.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/1743227/pexels-photo-1743227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/2227832/pexels-photo-2227832.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/2251247/pexels-photo-2251247.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/439227/pexels-photo-439227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    ],
+    EPC: "https://www.usehammock.com/wp-content/uploads/2023/02/eb46cf5691c4-epcrating.png.webp",
+  },
+  {
+    id: "6",
+    type: "rent",
+    address: {
+      town: "Lovete",
+      street: "Szent utca",
+    },
+    propertyType: "Semi-Detached House",
+    imageURL:
+      "https://media.istockphoto.com/id/178365226/ro/fotografie/semi-deta%C8%99ate-red-brick-case.jpg?s=1024x1024&w=is&k=20&c=Olap1KD4u_pFsF2ecq21AVcGo-Cgg3ia7e7CA7-R57w=",
+    nrOfBedrooms: 3,
+    nrOfBathrooms: 3,
+    productDescription:
+      "Expansive detached house featuring contemporary comforts, a generous backyard, and a welcoming circular driveway.",
+    price: 4000,
+    images: [
+      "https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/1080696/pexels-photo-1080696.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/1743227/pexels-photo-1743227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/2227832/pexels-photo-2227832.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/2251247/pexels-photo-2251247.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/439227/pexels-photo-439227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    ],
+    EPC: "https://www.usehammock.com/wp-content/uploads/2023/02/eb46cf5691c4-epcrating.png.webp",
+  },
+  {
+    id: "7",
+    type: "rent",
+    address: {
+      town: "Lovete",
+      street: "Balog utca",
+    },
+    propertyType: "Semi-Detached House",
+    imageURL:
+      "https://www.propertypriceadvice.co.uk/wp-content/uploads/2019/08/Semi-Detached-Home-UK-RS.jpg",
+    nrOfBedrooms: 2,
+    nrOfBathrooms: 3,
+    productDescription:
+      "Expansive detached house featuring contemporary comforts, a generous backyard, and a welcoming circular driveway.",
+    price: 2500,
+    images: [
+      "https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/1080696/pexels-photo-1080696.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/1743227/pexels-photo-1743227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/2227832/pexels-photo-2227832.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/2251247/pexels-photo-2251247.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/439227/pexels-photo-439227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    ],
+    EPC: "https://www.usehammock.com/wp-content/uploads/2023/02/eb46cf5691c4-epcrating.png.webp",
+  },
+  {
+    id: "8",
+    type: "sale",
+    address: {
+      town: "Almas",
+      street: "Patak utca",
+    },
+    propertyType: "",
+    imageURL:
+      "https://www.thespruce.com/thmb/rF9fgok79hDFLub-DSkpDmTB-PI=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-523075374-8d27b929fdfc4702aab5c73f821a65de.jpg",
+    nrOfBedrooms: 1,
+    nrOfBathrooms: 1,
+    productDescription:
+      "Expansive detached house featuring contemporary comforts, a generous backyard, and a welcoming circular driveway.",
+    price: 100000,
     images: [
       "https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       "https://images.pexels.com/photos/1080696/pexels-photo-1080696.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",

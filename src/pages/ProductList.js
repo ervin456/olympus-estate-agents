@@ -9,10 +9,35 @@ export default function ProductList() {
     setProductList(PRODUCT_DATA);
   }, []);
 
-  const [maxPriceQueryParam, setmaxPriceQueryParam] = useState();
+  const [maxPriceQueryParam, setMaxPriceQueryParam] = useState();
+  const [maxPricePerMonthQueryParam, setMaxPricePerMonthQueryParam] =
+    useState();
+  const [locationQueryParam, setlocationQueryParam] = useState();
+  const [propertyTypeQueryParam, setpropertyTypeQueryParam] = useState();
+  const [bedroomsQueryParam, setbedroomsQueryParam] = useState();
+  const [typeQueryParam, settypeQueryParam] = useState();
   const [searchParams, setSearchParams] = useSearchParams();
+
   useEffect(() => {
-    setmaxPriceQueryParam(searchParams.get("maxPrice"));
+    setMaxPriceQueryParam(searchParams.get("maxPrice"));
+    setMaxPricePerMonthQueryParam(searchParams.get("maxPricePerMonth"));
+    setlocationQueryParam(searchParams.get("location"));
+    setpropertyTypeQueryParam(searchParams.get("propertyType"));
+    setbedroomsQueryParam(searchParams.get("bedrooms"));
+    settypeQueryParam(searchParams.get("type"));
+    if (
+      searchParams.get("type") === "sale" &&
+      searchParams.get("maxPricePerMonth")
+    ) {
+      searchParams.delete("maxPricePerMonth");
+      setSearchParams(searchParams);
+    } else if (
+      searchParams.get("type") === "rent" &&
+      searchParams.get("maxPrice")
+    ) {
+      searchParams.delete("maxPrice");
+      setSearchParams(searchParams);
+    }
   }, [searchParams]);
 
   useEffect(() => {
@@ -25,6 +50,38 @@ export default function ProductList() {
 
       setProductList(tempFilteredList);
     }
+    if (maxPricePerMonthQueryParam) {
+      tempFilteredList = tempFilteredList.filter((product, index) => {
+        return product.price <= maxPricePerMonthQueryParam;
+      });
+
+      setProductList(tempFilteredList);
+    }
+
+    if (locationQueryParam) {
+      tempFilteredList = tempFilteredList.filter((product, index) => {
+        return product.address.town === locationQueryParam;
+      });
+      setProductList(tempFilteredList);
+    }
+    if (propertyTypeQueryParam) {
+      tempFilteredList = tempFilteredList.filter((product, index) => {
+        return product.propertypropertyType === propertyTypeQueryParam;
+      });
+      setProductList(tempFilteredList);
+    }
+    if (bedroomsQueryParam) {
+      tempFilteredList = tempFilteredList.filter((product, index) => {
+        return product.nrOfBedrooms == bedroomsQueryParam;
+      });
+      setProductList(tempFilteredList);
+    }
+    if (typeQueryParam) {
+      tempFilteredList = tempFilteredList.filter((product, index) => {
+        return product.type == typeQueryParam;
+      });
+      setProductList(tempFilteredList);
+    }
   }, [maxPriceQueryParam]);
 
   return (
@@ -32,21 +89,33 @@ export default function ProductList() {
       <div className="product-list-page-logo">
         <img src="/oea_logo.png" alt="Image not found"></img>
       </div>
-      <h3>Properties for Sale</h3>
+      {productList.length !== 0 ? (
+        <h3>Properties for Sale</h3>
+      ) : (
+        <h3>
+          No property found. <a href="/search">Go back to search page</a>{" "}
+        </h3>
+      )}
       <div className="product-card-list-container">
-        {productList?.map((product, index) => {
-          return (
-            <ProductCard
-              key={`product-card-${product.id}`}
-              imageURL={product?.imageURL}
-              productDisplayName={product?.productDisplayName}
-              nrOfBedrooms={product?.nrOfBedrooms}
-              nrOfBathrooms={product?.nrOfBathrooms}
-              productDescription={product?.productDescription}
-              price={product?.price}
-            />
-          );
-        })}
+        {productList.length !== 0
+          ? productList?.map((product, index) => {
+              return (
+                <ProductCard
+                  key={`product-card-${product.id}`}
+                  imageURL={product?.imageURL}
+                  productDisplayName={`${product?.nrOfBedrooms} bed ${
+                    product?.propertyType
+                  } ${product?.type === "sale" ? "for sale " : "to rent"} in ${
+                    product?.address.town
+                  }, ${product?.address.street}`}
+                  nrOfBedrooms={product?.nrOfBedrooms}
+                  nrOfBathrooms={product?.nrOfBathrooms}
+                  productDescription={product?.productDescription}
+                  price={product?.price}
+                />
+              );
+            })
+          : null}
       </div>
     </div>
   );

@@ -8,40 +8,73 @@ import {
   TYPE,
 } from "../utils/constants";
 import { CustomButton } from "../components/CustomButton/CustomButton";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Search() {
+  const navigate = useNavigate();
   const [locations, setLocations] = useState([]);
   const [maxPrice, setmaxPrice] = useState([]);
-  const [maxPriceMonthly, setmaxPriceMonthly] = useState([]);
-  const [type, setType] = useState([]);
+  const [maxPricePerMonth, setmaxPricePerMonth] = useState([]);
+  const [Propertytype, setPropertyType] = useState([]);
   const [bedrooms, setBedrooms] = useState([]);
   const [searchMenuOptions, setSearchMenuOptions] = useState(1);
   const [selectedLocation, setSelectedLocation] = useState(LOCATIONS[0]);
   const [selectedMaxPrice, setSelectedMaxPrice] = useState(MAX_PRICES[0]);
-  const [selectedMaxPriceMonthly, setSelectedMaxPriceMonthly] = useState(
+  const [selectedmaxPricePerMonth, setSelectedmaxPricePerMonth] = useState(
     MAX_PRICES_MONTHLY[0]
   );
-  const [selectedType, setSelectedType] = useState(TYPE[0]);
+  const [selectedPropertyType, setSelectedPropertyType] = useState(TYPE[0]);
   const [selectedBedroom, setSelectedBedroom] = useState(BEDROOMS[0]);
 
   useEffect(() => {
     setLocations(LOCATIONS);
     setmaxPrice(MAX_PRICES);
-    setmaxPriceMonthly(MAX_PRICES_MONTHLY);
-    setType(TYPE);
+    setmaxPricePerMonth(MAX_PRICES_MONTHLY);
+    setPropertyType(TYPE);
     setBedrooms(BEDROOMS);
   }, []);
-
-  function onSearchButtonClicked(event) {
-    console.log("click");
-    console.log("selected Location: ", selectedLocation);
-    if (searchMenuOptions === 1) {
-      console.log("selected Max Price: ", selectedMaxPrice);
-    } else console.log("selected Max Price Monthly: ", selectedMaxPriceMonthly);
-
-    console.log("selected Type: ", selectedType);
-    console.log("selected Bedrooms: ", selectedBedroom);
+  function getQuerySymbol(query) {
+    if (query === "") {
+      return "?";
+    } else {
+      return "&";
+    }
+  }
+  function OnSearchButtonClicked(event) {
+    let searchQuery = "";
+    if (selectedLocation !== "All") {
+      searchQuery =
+        searchQuery +
+        `${getQuerySymbol(searchQuery)}location=${selectedLocation}`;
+    }
+    if (selectedPropertyType !== "Any") {
+      searchQuery =
+        searchQuery +
+        `${getQuerySymbol(searchQuery)}propertyType=${selectedPropertyType}`;
+    }
+    if (selectedBedroom !== "Studio+") {
+      searchQuery =
+        searchQuery +
+        `${getQuerySymbol(searchQuery)}bedrooms=${selectedBedroom}`;
+    }
+    if (searchMenuOptions === 2) {
+      searchQuery = searchQuery + `${getQuerySymbol(searchQuery)}type=rent`;
+      if (selectedmaxPricePerMonth !== "No Max") {
+        searchQuery =
+          searchQuery +
+          `${getQuerySymbol(
+            searchQuery
+          )}maxPricePerMonth=${selectedmaxPricePerMonth}`;
+      }
+    } else {
+      searchQuery = searchQuery + `${getQuerySymbol(searchQuery)}type=sale`;
+      if (selectedMaxPrice !== "No Max") {
+        searchQuery =
+          searchQuery +
+          `${getQuerySymbol(searchQuery)}maxPrice=${selectedMaxPrice}`;
+      }
+    }
+    navigate(`/list${searchQuery}`);
   }
 
   return (
@@ -87,8 +120,8 @@ export default function Search() {
             <label for="max-price">Max Price(per month) </label>
             <br></br>
             <CustomDropdown
-              values={maxPriceMonthly}
-              onChange={setSelectedMaxPriceMonthly}
+              values={maxPricePerMonth}
+              onChange={setSelectedmaxPricePerMonth}
             />
             <br></br>
             <br></br>
@@ -96,7 +129,10 @@ export default function Search() {
         )}
         <label for="type">Type</label>
         <br></br>
-        <CustomDropdown values={type} onChange={setSelectedType} />
+        <CustomDropdown
+          values={Propertytype}
+          onChange={setSelectedPropertyType}
+        />
         <br></br>
         <br></br>
         <label for="bedrooms">Bedrooms</label>
@@ -104,7 +140,7 @@ export default function Search() {
         <CustomDropdown values={bedrooms} onChange={setSelectedBedroom} />
         <br></br>
         <br></br>
-        <CustomButton onClick={(event) => onSearchButtonClicked(event)}>
+        <CustomButton onClick={(event) => OnSearchButtonClicked(event)}>
           Search
         </CustomButton>
       </div>

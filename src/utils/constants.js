@@ -40,6 +40,7 @@ export const MAX_PRICES = [
   "10000000",
 ];
 export const MAX_PRICES_MONTHLY = [
+  "No Max",
   "400",
   "425",
   "450",
