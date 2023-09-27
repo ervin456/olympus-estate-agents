@@ -25,8 +25,16 @@ export default function ProductDetails() {
 
   return (
     <div className="product-details-page">
-      <div className="product-details-logo">
-        <img src="/oea_logo.png" alt="Image not found"></img>
+      <div className="product-details-header-container">
+        <a href="javascript:history.back()">
+          <img
+            src="/chevron-left-solid.svg"
+            className="symbol-to-navigate-back"
+          ></img>
+        </a>
+        <div className="product-details-logo">
+          <img src="/oea_logo.png" alt="Image not found"></img>
+        </div>
       </div>
       <div className="product-image-display-name-combiner">
         <div className="product-details-house-image">

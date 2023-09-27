@@ -5,7 +5,7 @@ import { getDisplayName } from "../utils/HelperFunctions";
 
 export default function ProductList() {
   const [productList, setProductList] = useState([]);
-  const [productFilterList, setproductFilterList] = useState([]);
+  const [productFilteredList, setProductFilteredList] = useState([]);
   const [maxPriceQueryParam, setMaxPriceQueryParam] = useState();
   const [maxPricePerMonthQueryParam, setMaxPricePerMonthQueryParam] =
     useState();
@@ -21,54 +21,12 @@ export default function ProductList() {
     })
       .then((res) => res.json())
       .then((data) => {
-        let tempFilteredList = [...data];
-
-        if (maxPriceQueryParam) {
-          tempFilteredList = tempFilteredList.filter((product, index) => {
-            return product.price <= maxPriceQueryParam;
-          });
-        }
-
-        if (maxPricePerMonthQueryParam) {
-          tempFilteredList = tempFilteredList.filter((product, index) => {
-            return product.price <= maxPricePerMonthQueryParam;
-          });
-        }
-
-        if (locationQueryParam) {
-          tempFilteredList = tempFilteredList.filter((product, index) => {
-            return product.address.town === locationQueryParam;
-          });
-        }
-        if (propertyTypeQueryParam) {
-          tempFilteredList = tempFilteredList.filter((product, index) => {
-            return product.propertypropertyType === propertyTypeQueryParam;
-          });
-        }
-        if (bedroomsQueryParam) {
-          tempFilteredList = tempFilteredList.filter((product, index) => {
-            return product.nrOfBedrooms == bedroomsQueryParam;
-          });
-        }
-        if (typeQueryParam) {
-          tempFilteredList = tempFilteredList.filter((product, index) => {
-            return product.type == typeQueryParam;
-          });
-        }
-        setProductList(tempFilteredList);
-        console.log("hey");
+        setProductList(data);
       })
       .catch((error) => {
         console.log("Something went wrong(product list)", error);
       });
-  }, [
-    maxPriceQueryParam,
-    maxPricePerMonthQueryParam,
-    locationQueryParam,
-    propertyTypeQueryParam,
-    bedroomsQueryParam,
-    typeQueryParam,
-  ]);
+  }, []);
 
   useEffect(() => {
     setMaxPriceQueryParam(searchParams.get("maxPrice"));
@@ -92,12 +50,66 @@ export default function ProductList() {
     }
   }, [searchParams]);
 
+  useEffect(() => {
+    let tempFilteredList = [...productList];
+
+    if (maxPriceQueryParam) {
+      tempFilteredList = tempFilteredList.filter((product, index) => {
+        return product.price <= maxPriceQueryParam;
+      });
+    }
+
+    if (maxPricePerMonthQueryParam) {
+      tempFilteredList = tempFilteredList.filter((product, index) => {
+        return product.price <= maxPricePerMonthQueryParam;
+      });
+    }
+
+    if (locationQueryParam) {
+      tempFilteredList = tempFilteredList.filter((product, index) => {
+        return product.address.town === locationQueryParam;
+      });
+    }
+    if (propertyTypeQueryParam) {
+      tempFilteredList = tempFilteredList.filter((product, index) => {
+        return product.propertypropertyType === propertyTypeQueryParam;
+      });
+    }
+    if (bedroomsQueryParam) {
+      tempFilteredList = tempFilteredList.filter((product, index) => {
+        return product.nrOfBedrooms == bedroomsQueryParam;
+      });
+    }
+    if (typeQueryParam) {
+      tempFilteredList = tempFilteredList.filter((product, index) => {
+        return product.type == typeQueryParam;
+      });
+    }
+    setProductFilteredList(tempFilteredList);
+  }, [
+    productList,
+    maxPriceQueryParam,
+    maxPricePerMonthQueryParam,
+    locationQueryParam,
+    propertyTypeQueryParam,
+    bedroomsQueryParam,
+    typeQueryParam,
+  ]);
+
   return (
     <div className="product-list-page">
-      <div className="product-list-page-logo">
-        <img src="/oea_logo.png" alt="Image not found"></img>
+      <div className="product-list-header-container">
+        <a href="/search">
+          <img
+            src="chevron-left-solid.svg"
+            className="symbol-to-navigate-back"
+          ></img>
+        </a>
+        <div className="product-list-page-logo">
+          <img src="/oea_logo.png" alt="Image not found"></img>
+        </div>
       </div>
-      {productList.length !== 0 ? (
+      {productFilteredList.length !== 0 ? (
         <h3>Properties for Sale</h3>
       ) : (
         <h3>
@@ -105,8 +117,8 @@ export default function ProductList() {
         </h3>
       )}
       <div className="product-card-list-container">
-        {productList.length !== 0
-          ? productList?.map((product, index) => {
+        {productFilteredList.length !== 0
+          ? productFilteredList?.map((product, index) => {
               return (
                 <a
                   className="product-card-link-container"

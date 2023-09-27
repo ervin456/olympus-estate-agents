@@ -137,7 +137,6 @@ export default function Search() {
           Bedrooms
         </div>
         <CustomDropdown values={bedrooms} onChange={setSelectedBedroom} />
-
         <br></br>
         <CustomButton onClick={(event) => OnSearchButtonClicked(event)}>
           Search

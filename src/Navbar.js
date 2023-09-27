@@ -7,8 +7,8 @@ export default function Navbar() {
         Olympus Estate Agents
       </Link>
       <ul>
-        <CustomLink to="/list">List</CustomLink>
         <CustomLink to="/search">Search</CustomLink>
+        <CustomLink to="/list">List</CustomLink>
       </ul>
     </nav>
   );
