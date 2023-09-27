@@ -7,3 +7,16 @@ export function cutFirstNCharacter(text, n) {
     return text;
   }
 }
+
+export function getDisplayName(
+  nrOfBedrooms,
+  propertyType,
+  type,
+  address,
+  street
+) {
+  return `
+${nrOfBedrooms} bed ${propertyType} ${
+    type === "sale" ? "for sale " : "to rent"
+  } in ${address}, ${street}`;
+}

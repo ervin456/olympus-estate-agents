@@ -1,12 +1,21 @@
 import { ProductCard } from "../components/ProductCard/ProductCard";
 import { useState, useEffect } from "react";
-import { PRODUCT_DATA } from "../utils/productMockedData";
 import { useSearchParams } from "react-router-dom";
+import { getDisplayName } from "../utils/HelperFunctions";
 
 export default function ProductList() {
   const [productList, setProductList] = useState([]);
   useEffect(() => {
-    setProductList(PRODUCT_DATA);
+    fetch("http://localhost:8000/properties", {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setProductList(data);
+      })
+      .catch((error) => {
+        console.log("Something went wrong(product list)", error);
+      });
   }, []);
 
   const [maxPriceQueryParam, setMaxPriceQueryParam] = useState();
@@ -107,13 +116,13 @@ export default function ProductList() {
                   <ProductCard
                     key={`product-card-${product.id}`}
                     imageURL={product?.imageURL}
-                    productDisplayName={`${product?.nrOfBedrooms} bed ${
-                      product?.propertyType
-                    } ${
-                      product?.type === "sale" ? "for sale " : "to rent"
-                    } in ${product?.address?.town}, ${
+                    productDisplayName={getDisplayName(
+                      product?.nrOfBedrooms,
+                      product?.propertyType,
+                      product?.type,
+                      product?.address?.town,
                       product?.address?.street
-                    }`}
+                    )}
                     nrOfBedrooms={product?.nrOfBedrooms}
                     nrOfBathrooms={product?.nrOfBathrooms}
                     productDescription={product?.productDescription}

@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
-import { PRODUCT_DATA } from "../utils/productMockedData";
 import { useState, useEffect } from "react";
 import ProductPhotoAlbum from "../components/ProductPhotoAlbum/ProductPhotoAlbum";
+import { getDisplayName } from "../utils/HelperFunctions";
 <link
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -11,10 +11,16 @@ export default function ProductDetails() {
   const [product, setProduct] = useState({});
 
   useEffect(() => {
-    const temp = PRODUCT_DATA.find((currentProduct, list) => {
-      return currentProduct.id === id;
-    });
-    setProduct(temp);
+    fetch(`http://localhost:8000/properties/${id}`, {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setProduct(data);
+      })
+      .catch((error) => {
+        console.log("Something went wrong(product details)", error);
+      });
   }, []);
 
   return (
@@ -27,9 +33,13 @@ export default function ProductDetails() {
           <img src={product.imageURL} alt="Image not found "></img>
         </div>
         <div className="product-details-display-name">
-          {`${product?.nrOfBedrooms} bed ${product?.propertyType} ${
-            product?.type === "sale" ? "for sale " : "to rent"
-          } in ${product?.address?.town}, ${product?.address?.street}`}
+          {getDisplayName(
+            product?.nrOfBedrooms,
+            product?.propertyType,
+            product?.type,
+            product?.address?.town,
+            product?.address?.street
+          )}
         </div>
       </div>
       <div className="product-details-element-bar">
