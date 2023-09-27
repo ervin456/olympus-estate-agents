@@ -5,19 +5,7 @@ import { getDisplayName } from "../utils/HelperFunctions";
 
 export default function ProductList() {
   const [productList, setProductList] = useState([]);
-  useEffect(() => {
-    fetch("http://localhost:8000/properties", {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setProductList(data);
-      })
-      .catch((error) => {
-        console.log("Something went wrong(product list)", error);
-      });
-  }, []);
-
+  const [productFilterList, setproductFilterList] = useState([]);
   const [maxPriceQueryParam, setMaxPriceQueryParam] = useState();
   const [maxPricePerMonthQueryParam, setMaxPricePerMonthQueryParam] =
     useState();
@@ -26,6 +14,61 @@ export default function ProductList() {
   const [bedroomsQueryParam, setbedroomsQueryParam] = useState();
   const [typeQueryParam, settypeQueryParam] = useState();
   const [searchParams, setSearchParams] = useSearchParams();
+
+  useEffect(() => {
+    fetch("http://localhost:8000/properties", {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        let tempFilteredList = [...data];
+
+        if (maxPriceQueryParam) {
+          tempFilteredList = tempFilteredList.filter((product, index) => {
+            return product.price <= maxPriceQueryParam;
+          });
+        }
+
+        if (maxPricePerMonthQueryParam) {
+          tempFilteredList = tempFilteredList.filter((product, index) => {
+            return product.price <= maxPricePerMonthQueryParam;
+          });
+        }
+
+        if (locationQueryParam) {
+          tempFilteredList = tempFilteredList.filter((product, index) => {
+            return product.address.town === locationQueryParam;
+          });
+        }
+        if (propertyTypeQueryParam) {
+          tempFilteredList = tempFilteredList.filter((product, index) => {
+            return product.propertypropertyType === propertyTypeQueryParam;
+          });
+        }
+        if (bedroomsQueryParam) {
+          tempFilteredList = tempFilteredList.filter((product, index) => {
+            return product.nrOfBedrooms == bedroomsQueryParam;
+          });
+        }
+        if (typeQueryParam) {
+          tempFilteredList = tempFilteredList.filter((product, index) => {
+            return product.type == typeQueryParam;
+          });
+        }
+        setProductList(tempFilteredList);
+        console.log("hey");
+      })
+      .catch((error) => {
+        console.log("Something went wrong(product list)", error);
+      });
+  }, [
+    maxPriceQueryParam,
+    maxPricePerMonthQueryParam,
+    locationQueryParam,
+    propertyTypeQueryParam,
+    bedroomsQueryParam,
+    typeQueryParam,
+  ]);
 
   useEffect(() => {
     setMaxPriceQueryParam(searchParams.get("maxPrice"));
@@ -48,50 +91,6 @@ export default function ProductList() {
       setSearchParams(searchParams);
     }
   }, [searchParams]);
-
-  useEffect(() => {
-    let tempFilteredList = [...productList];
-
-    if (maxPriceQueryParam) {
-      tempFilteredList = tempFilteredList.filter((product, index) => {
-        return product.price <= maxPriceQueryParam;
-      });
-
-      setProductList(tempFilteredList);
-    }
-    if (maxPricePerMonthQueryParam) {
-      tempFilteredList = tempFilteredList.filter((product, index) => {
-        return product.price <= maxPricePerMonthQueryParam;
-      });
-
-      setProductList(tempFilteredList);
-    }
-
-    if (locationQueryParam) {
-      tempFilteredList = tempFilteredList.filter((product, index) => {
-        return product.address.town === locationQueryParam;
-      });
-      setProductList(tempFilteredList);
-    }
-    if (propertyTypeQueryParam) {
-      tempFilteredList = tempFilteredList.filter((product, index) => {
-        return product.propertypropertyType === propertyTypeQueryParam;
-      });
-      setProductList(tempFilteredList);
-    }
-    if (bedroomsQueryParam) {
-      tempFilteredList = tempFilteredList.filter((product, index) => {
-        return product.nrOfBedrooms == bedroomsQueryParam;
-      });
-      setProductList(tempFilteredList);
-    }
-    if (typeQueryParam) {
-      tempFilteredList = tempFilteredList.filter((product, index) => {
-        return product.type == typeQueryParam;
-      });
-      setProductList(tempFilteredList);
-    }
-  }, [maxPriceQueryParam]);
 
   return (
     <div className="product-list-page">
