@@ -107,7 +107,6 @@ export default function ProductDetails() {
           marginwidth="0"
           src="https://maps.google.com/maps?&amp;hl=en&amp;q=University of Oxford&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
         ></iframe>
-        <a href="https://connectionsgame.org/"></a>
       </div>
       <section id="EPC"></section>
       <h3 className="product-details-image-title">EPC</h3>
